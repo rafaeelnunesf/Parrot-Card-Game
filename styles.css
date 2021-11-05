@@ -45,3 +45,16 @@ h1{
     background-repeat: no-repeat;
     background-position: center;
 }
+@media (max-width: 900px) {
+
+    .cards{
+        flex-direction: column;
+    }
+    h1{
+        width: 312px;
+        height: 63px;
+        font-size: 36px;
+        line-height: 42px;
+        text-align: center;
+    }
+}

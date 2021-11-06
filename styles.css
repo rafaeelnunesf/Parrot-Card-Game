@@ -33,17 +33,51 @@ h1{
 .card{
     width: 117px;
     height: 146px;
-    
-    
-    border: 1px solid #99CEA8;
-    box-sizing: border-box;
-    border-radius: 5px;
+    position: relative;   
+}
+.card .face{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+
+    backface-visibility: hidden;
+
+    transition: all .5s;
+    transform-style: preserve-3d;
 
     background: #A7E9AF;
+    border-radius: 5px;
+}
+.card .front-face{  
     background-image: url(/Images/front.png);
     background-size: 100px ;
     background-repeat: no-repeat;
     background-position: center;
+    border: 1px solid #99CEA8;
+    
+}
+.card .back-face{
+    transform: rotateY(180deg);
+
+}
+.card.virada .back-face {
+    transform: rotateY(0deg);
+}
+
+.card.virada .front-face {
+    transform: rotateY(-180deg);
+}
+.card.par .back-face {
+    transform: rotateY(0deg);
+}
+
+.card.par .front-face {
+    transform: rotateY(-180deg);
 }
 @media (max-width: 900px) {
 

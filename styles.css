@@ -5,6 +5,9 @@ body{
     align-items: center;
     padding-top: 40px;
 }
+header{
+    position: relative;
+}
 h1{
 
     width: 540px;
@@ -21,6 +24,21 @@ h1{
     margin-bottom: 50px;
     
     color: #75B79E;
+}
+.relogio{
+    position:fixed;
+    top: 30px;
+    right: 30px;
+
+    width: 100px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #FFF;
+    border: 1px solid red;
 }
 .cards{
     width: 872px;
@@ -52,13 +70,14 @@ h1{
 
     background: #A7E9AF;
     border-radius: 5px;
+    border: 1px solid #99CEA8;
 }
 .card .front-face{  
     background-image: url(/Images/front.png);
     background-size: 100px ;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid #99CEA8;
+    
     
 }
 .card .back-face{
@@ -79,6 +98,10 @@ h1{
 .card.par .front-face {
     transform: rotateY(-180deg);
 }
+
+
+
+
 @media (max-width: 900px) {
 
     .cards{

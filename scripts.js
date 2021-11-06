@@ -5,8 +5,24 @@ let arrayCartas = [] //OK
 let numeroDeCartasComPar = 0 //OK
 let jogadas = 0
 
+let tempo = 0
+let idInterval
+
+function cronometro(){
+    idInterval = setInterval(aumentarUmSegundo,1000);
+}
+function aumentarUmSegundo() {
+    tempo++
+    document.querySelector(".relogio").innerHTML = `${tempo} segundos`
+    if(numeroDeCartasComPar === numeroDeCartas){
+        clearInterval(idInterval)
+    }
+}
+
+let numeroDeCartas
 function QuantidadeDeCartas(){
-    const numeroDeCartas = prompt("Com quantas cartas você quer jogar?")
+    numeroDeCartas = parseInt(prompt("Com quantas cartas você quer jogar?"))
+    cronometro()
 
     const divisao = numeroDeCartas % 2;
     if(numeroDeCartas >= 4 && numeroDeCartas <= 14 && divisao === 0){
@@ -42,16 +58,13 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 function regrasDeJogo(carta) {
-    jogadas++
-    cartasSemPar = numeroDeCartasViradas - numeroDeCartasComPar
-
     const gif = `"${carta.childNodes[3].childNodes[1].currentSrc}"`
     arrayCartas.push(gif)
 
     virarCartas(carta,numeroDeCartasViradas)
     verificarSeSaoIguais(arrayCartas)
+    setTimeout(venceu,200)
 }
-
 
 function virarCartas(carta) {
     if(numeroDeCartasViradas===0){
@@ -65,8 +78,9 @@ function virarCartas(carta) {
 function verificarSeSaoIguais(arrayCartasviradas){
     if(arrayCartasviradas[0]===arrayCartasviradas[1]){    
         colocarClassePar()
+        jogadas++
     }else if(arrayCartasviradas[0]!==arrayCartasviradas[1] && arrayCartasviradas[0] !== undefined && arrayCartasviradas[1]!== undefined){
-        setTimeout(tirarClasseVirada,1000);
+        setTimeout(tirarClasseVirada,1000);       
     }
 }
 function colocarClassePar() {
@@ -75,8 +89,6 @@ function colocarClassePar() {
         pares[i].classList.add("par")
         arrayCartas = []
         numeroDeCartasViradas = 0
-        numeroDeCartasComPar++
-        numeroDeCartasComPar++
     }
 }
 function tirarClasseVirada() {
@@ -86,11 +98,21 @@ function tirarClasseVirada() {
         numeroDeCartasViradas = 0
         arrayCartas = []
     }
+    jogadas++
 }
 
+function venceu() {
+    const numeroDeCartasComPar = document.querySelectorAll(".par").length
+    if(numeroDeCartasComPar === numeroDeCartas){
+        alert(`Você venceu em ${jogadas} jogadas e em ${tempo} segundos`)
 
-
-
-
-
+        decisao = prompt("Você deseja reiniciar o jogo?")
+        
+            if (decisao === 'sim'){
+                alert("sim")
+            }else{
+                clearInterval(idInterval)
+            }
+    }
+}
 QuantidadeDeCartas()

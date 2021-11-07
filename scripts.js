@@ -107,9 +107,8 @@ function venceu() {
         alert(`Você venceu em ${jogadas} jogadas e em ${tempo} segundos`)
 
         decisao = prompt("Você deseja reiniciar o jogo?")
-        
             if (decisao === 'sim'){
-                alert("sim")
+                location.reload(true)
             }else{
                 clearInterval(idInterval)
             }

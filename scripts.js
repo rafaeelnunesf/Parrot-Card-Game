@@ -65,13 +65,16 @@ function regrasDeJogo(carta) {
     if(cartaClicada){
         return
     }
+    // Impossibilita de virar mais de 2 cartas, mesmo quando as outras estão desvirando
+    const QuantidadeDeCartasViradas = arrayCartas.length
+    if(QuantidadeDeCartasViradas > 1){
+        return
+    }
 
     arrayCartas.push(gif)
-
     virarCartas(carta,numeroDeCartasViradas)
     verificarSeSaoIguais(arrayCartas)
     setTimeout(venceu,200)
-
 }
 
 function virarCartas(carta) {

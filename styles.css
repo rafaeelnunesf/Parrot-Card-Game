@@ -27,10 +27,10 @@ h1{
 }
 .relogio{
     position:fixed;
-    top: 30px;
+    top: 45px;
     right: 30px;
 
-    width: 100px;
+    width: 110px;
     height: 50px;
 
     display: flex;
@@ -38,7 +38,13 @@ h1{
     align-items: center;
 
     background: #FFF;
-    border: 1px solid red;
+    border: 2px solid #75B79E;
+    border-radius: 30px;
+
+    color: #75B79E;
+    
+    font-weight: bold;
+    font-family: Roboto
 }
 .cards{
     width: 872px;
